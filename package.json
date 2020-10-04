@@ -1,0 +1,27 @@
+{
+  "name": "sequelize-true-migration",
+  "version": "0.1.0",
+  "description": "I am able to form your \"Sql-Based Database\" connected to \"Sequelize\" to look like \"Sequelize Models\" in your \"Sequelize Model Schemes\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammadhb/sequelize-true-migration.git"
+  },
+  "keywords": [
+    "sql",
+    "sequelize",
+    "migration",
+    "sync",
+    "model",
+    "orm"
+  ],
+  "author": "Mohammad Hosein Balkhani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohammadhb/sequelize-true-migration/issues"
+  },
+  "homepage": "https://github.com/mohammadhb/sequelize-true-migration#readme"
+}
