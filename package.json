@@ -1,6 +1,6 @@
 {
   "name": "sequelize-true-migration",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "I am able to form your \"Sql-Based Database\" connected to \"Sequelize\" to look like \"Sequelize Models\" in your \"Sequelize Model Schemes\"",
   "main": "index.js",
   "scripts": {
