@@ -237,6 +237,10 @@ class Main {
             err:null,
             verify:true
         }
+
+        if(!tableColumn){
+            console.log(modelScheme)
+        }
     
         if(modelScheme.type instanceof typeConversion[tableColumn.dataType] ){
 
@@ -438,10 +442,11 @@ class Main {
 
             const newTableName = model.options.tableName;
             const newTableScheme = model.fieldRawAttributesMap;
+
             
             try {
 
-                console.log("Adding Table",newTableScheme)
+                // console.log("Adding Table",newTableScheme);
 
                 sequelizeQueryInterface
                 .createTable(newTableName,newTableScheme)
@@ -451,6 +456,30 @@ class Main {
                 .catch((e)=>{
 
                     if(e.message.includes("errno: 150")){
+
+                        if(e.message.includes("Foreign key constraint is incorrectly formed")){
+
+                            const modelToTableNames = {}
+
+                            Object.keys(this.modelList).forEach((modelKey)=>{
+                                modelToTableNames[modelKey] = this.modelList[modelKey].tableName
+                            });
+
+                            for (let tableSchemeKey in newTableScheme) {
+
+                                if(newTableScheme[tableSchemeKey].references) {
+                                    newTableScheme[tableSchemeKey].references.model = modelToTableNames[newTableScheme[tableSchemeKey].references.model]
+                                }
+
+                            }
+
+                            sequelizeQueryInterface
+                            .createTable(newTableName,newTableScheme)
+                            .then((result)=>{
+
+                            })
+
+                        }
 
                         console.error("Error : Please consider using BIGINT.UNSIGNED in your foreign key ( refrence ) data type rather than BIGINT.SIGNED or BIGINT.");
 
